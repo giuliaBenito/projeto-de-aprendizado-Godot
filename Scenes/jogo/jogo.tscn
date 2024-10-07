@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c35q278n4qm0k"]
+
+[ext_resource type="PackedScene" uid="uid://dl2tu36p32fob" path="res://Scenes/jogador/jogador.tscn" id="1_dcd8d"]
+[ext_resource type="Texture2D" uid="uid://d4ce7qdqbkg3o" path="res://assets/piso.png" id="2_fbc1f"]
+
+[node name="Jogo" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_dcd8d")]
+position = Vector2(573, 328)
+
+[node name="piso" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_fbc1f")
