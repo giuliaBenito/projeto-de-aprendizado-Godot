@@ -1,20 +1,33 @@
 extends Node2D
 
-var idade : int = 20
-
-var velocidade_do_carro : float = 75.3
-
-var nome_do_jogador : String = "adalberto"
-
-var esta_no_chao : bool = false
 
 func _ready() -> void:
-	print(idade)
-	print(velocidade_do_carro)
-	print(nome_do_jogador)
-	print(esta_no_chao)
+	#cumprimentar()
+	#cumprimentar2("Luigi")
+	#cumprimentar2("Adalberto")
+	
+	#print(calcular_soma())
+	print (calculadora(10, 5))
 	
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func calculadora(n1 : int, n2 : int) -> int :
+	var resposta = n1 + n2
+	return resposta
+	
+	
+
 func _process(delta: float) -> void:
 	pass
+
+
+func cumprimentar2(nome : String) -> void:
+	print("Olá, " + nome)
+
+
+
+func cumprimentar() -> void:
+	print("Olá, Luigi!")
+
+
+func calcular_soma() -> int:
+	return 1 + 2 

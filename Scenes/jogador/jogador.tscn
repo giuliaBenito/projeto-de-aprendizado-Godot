@@ -1,11 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl2tu36p32fob"]
+[gd_scene load_steps=4 format=3 uid="uid://dl2tu36p32fob"]
 
 [ext_resource type="Texture2D" uid="uid://do182nq6pxhrd" path="res://assets/mago.png" id="1_nj1ur"]
+
+[sub_resource type="GDScript" id="GDScript_0ck8l"]
+script/source = "extends CharacterBody2D
+
+var velocidade_de_movimento : float = 400.0
+var direcao_do_movimento : Vector2 = Vector2(0, 0)
+
+
+func _ready() -> void:
+	pass 
+
+
+
+func _process(delta: float) -> void:
+	movimentar_jogador()
+
+
+func movimentar_jogador() -> void:
+	#movimentação horizontal
+	if Input.is_action_pressed(\"mv_direito\"): 
+		direcao_do_movimento.x = 1
+	
+	elif Input.is_action_pressed(\"mv_esquerdo\"):
+		direcao_do_movimento.x = -1
+	else:
+		direcao_do_movimento.x = 0
+	
+	# movimentação vertical
+	if Input.is_action_pressed(\"mv_cima\"):
+		direcao_do_movimento.y = -1
+	elif Input.is_action_pressed(\"mv_baixo\"):
+		direcao_do_movimento.y = 1
+	else:
+		direcao_do_movimento.y = 0
+	
+	#aplica as mudancas na direção do jogador
+	velocity = direcao_do_movimento.normalized() * velocidade_de_movimento
+	move_and_slide()
+	
+	
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0rv1"]
 radius = 68.0074
 
 [node name="Jogador" type="CharacterBody2D"]
+script = SubResource("GDScript_0ck8l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
